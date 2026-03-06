@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Freelancer Pro | Portfolio Interativo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap');
+        
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #6366f1, #a855f7, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .blob {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(180deg, rgba(99, 102, 241, 0.2) 0%, rgba(236, 72, 153, 0.2) 100%);
+            filter: blur(50px);
+            border-radius: 50%;
+            z-index: -1;
+            animation: move 20s infinite alternate;
+        }
+
+        @keyframes move {
+            from { transform: translate(0, 0); }
+            to { transform: translate(100px, 100px); }
+        }
+
+        .card-hover:hover {
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+        }
+
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #6366f1;
+            transition: width 0.3s;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 overflow-x-hidden">
+
+    <!-- Blobs de Fundo Animados -->
+    <div class="blob top-0 left-0"></div>
+    <div class="blob bottom-0 right-0" style="animation-delay: -5s;"></div>
+
+    <!-- Navegação -->
+    <nav class="fixed w-full z-50 glass px-6 py-4">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="text-2xl font-extrabold gradient-text">FREELANCER.DEV</div>
+            <div class="hidden md:flex space-x-8 font-semibold">
+                <a href="#inicio" class="nav-link">Início</a>
+                <a href="#servicos" class="nav-link">Serviços</a>
+                <a href="#portfolio" class="nav-link">Portfólio</a>
+                <a href="#contato" class="nav-link">Contacto</a>
+            </div>
+            <!-- Link Direto para WhatsApp no Header -->
+            <a href="https://wa.me/5538998957863" target="_blank" class="bg-indigo-600 text-white px-6 py-2 rounded-full font-bold hover:bg-indigo-700 transition shadow-lg shadow-indigo-200">
+                Bora Conversar?
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="min-h-screen flex items-center justify-center pt-20 px-6">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+            <div class="space-y-6">
+                <span class="bg-indigo-100 text-indigo-700 px-4 py-1 rounded-full text-sm font-bold uppercase tracking-widest">Disponível para Projetos</span>
+                <h1 class="text-5xl md:text-7xl font-extrabold leading-tight">
+                    Transformo ideias em <span class="gradient-text">experiências digitais</span> memoráveis.
+                </h1>
+                <p class="text-xl text-slate-600 max-w-lg">
+                    Desenvolvedor Full-stack e Designer UI/UX focado em criar soluções que vendem e encantam.
+                </p>
+                <div class="flex space-x-4">
+                    <a href="#portfolio" class="bg-slate-900 text-white px-8 py-4 rounded-xl font-bold hover:scale-105 transition">Ver Projetos</a>
+                    <div class="flex items-center space-x-4 px-4">
+                        <a href="https://wa.me/5538998957863" target="_blank" class="text-slate-400 hover:text-green-500 text-2xl transition"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" class="text-slate-400 hover:text-indigo-600 text-2xl transition"><i class="fab fa-github"></i></a>
+                        <a href="#" class="text-slate-400 hover:text-indigo-600 text-2xl transition"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="relative">
+                <div class="w-full h-[400px] md:h-[500px] bg-gradient-to-tr from-indigo-500 to-purple-500 rounded-[2rem] rotate-3 overflow-hidden shadow-2xl">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?fit=crop&w=800&q=80" alt="Minha Foto" class="w-full h-full object-cover -rotate-3 scale-110 opacity-90">
+                </div>
+                <!-- Card flutuante interativo -->
+                <div class="absolute -bottom-6 -left-6 glass p-6 rounded-2xl shadow-xl card-hover hidden sm:block">
+                    <div class="flex items-center space-x-4">
+                        <div class="bg-green-100 p-3 rounded-full text-green-600"><i class="fas fa-check"></i></div>
+                        <div>
+                            <p class="font-bold text-lg">+50 Projetos</p>
+                            <p class="text-sm text-slate-500">Entregues com sucesso</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Serviços -->
+    <section id="servicos" class="py-24 bg-white px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-extrabold mb-4">Como posso te ajudar?</h2>
+                <p class="text-slate-500">Soluções completas para a sua presença online</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="p-8 rounded-3xl border border-slate-100 hover:border-indigo-200 hover:shadow-2xl transition-all duration-300 card-hover group">
+                    <div class="w-14 h-14 bg-indigo-50 rounded-2xl flex items-center justify-center text-indigo-600 text-2xl mb-6 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Web Development</h3>
+                    <p class="text-slate-500 leading-relaxed">Sites rápidos, seguros e otimizados para SEO usando as tecnologias mais modernas como React, Node e Next.js.</p>
+                </div>
+                <div class="p-8 rounded-3xl border border-slate-100 hover:border-purple-200 hover:shadow-2xl transition-all duration-300 card-hover group">
+                    <div class="w-14 h-14 bg-purple-50 rounded-2xl flex items-center justify-center text-purple-600 text-2xl mb-6 group-hover:bg-purple-600 group-hover:text-white transition-colors">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">UI/UX Design</h3>
+                    <p class="text-slate-500 leading-relaxed">Interfaces intuitivas focadas na experiência do utilizador e na identidade visual da sua marca.</p>
+                </div>
+                <div class="p-8 rounded-3xl border border-slate-100 hover:border-pink-200 hover:shadow-2xl transition-all duration-300 card-hover group">
+                    <div class="w-14 h-14 bg-pink-50 rounded-2xl flex items-center justify-center text-pink-600 text-2xl mb-6 group-hover:bg-pink-600 group-hover:text-white transition-colors">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">E-commerce</h3>
+                    <p class="text-slate-500 leading-relaxed">Criação de lojas virtuais completas para escalar as suas vendas com integrações de pagamento seguras.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfólio Interativo -->
+    <section id="portfolio" class="py-24 px-6 bg-slate-50">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12">
+                <div>
+                    <h2 class="text-4xl font-extrabold mb-4">Projetos em Destaque</h2>
+                    <p class="text-slate-500">Uma seleção do que ando a construir</p>
+                </div>
+                <div class="flex space-x-2 mt-6 md:mt-0">
+                    <button onclick="filterProjects('all')" class="px-6 py-2 rounded-full bg-white border border-slate-200 hover:bg-indigo-600 hover:text-white transition font-semibold">Tudo</button>
+                    <button onclick="filterProjects('web')" class="px-6 py-2 rounded-full bg-white border border-slate-200 hover:bg-indigo-600 hover:text-white transition font-semibold">Web</button>
+                    <button onclick="filterProjects('design')" class="px-6 py-2 rounded-full bg-white border border-slate-200 hover:bg-indigo-600 hover:text-white transition font-semibold">Design</button>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="project-grid">
+                <!-- Projeto 1 -->
+                <div class="project-card bg-white rounded-[2rem] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 group" data-category="web">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?fit=crop&w=800&q=80" alt="Projeto Web" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <div class="absolute inset-0 bg-indigo-600 opacity-0 group-hover:opacity-20 transition"></div>
+                    </div>
+                    <div class="p-8">
+                        <span class="text-indigo-600 text-xs font-bold uppercase tracking-wider">Web Development</span>
+                        <h4 class="text-2xl font-bold mt-2 mb-4">Fintech Dashboard</h4>
+                        <p class="text-slate-500 text-sm mb-6">Plataforma de gestão financeira com gráficos em tempo real e análise de dados.</p>
+                        <a href="#" class="inline-flex items-center text-slate-900 font-bold hover:text-indigo-600">Ver Caso <i class="fas fa-arrow-right ml-2 text-xs"></i></a>
+                    </div>
+                </div>
+
+                <!-- Projeto 2 -->
+                <div class="project-card bg-white rounded-[2rem] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 group" data-category="design">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1586717791821-3f44a563eb4c?fit=crop&w=800&q=80" alt="Projeto Design" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <div class="absolute inset-0 bg-purple-600 opacity-0 group-hover:opacity-20 transition"></div>
+                    </div>
+                    <div class="p-8">
+                        <span class="text-purple-600 text-xs font-bold uppercase tracking-wider">UI/UX Design</span>
+                        <h4 class="text-2xl font-bold mt-2 mb-4">Nature App Concept</h4>
+                        <p class="text-slate-500 text-sm mb-6">Redesign completo de um aplicativo focado em sustentabilidade e vida outdoor.</p>
+                        <a href="#" class="inline-flex items-center text-slate-900 font-bold hover:text-purple-600">Ver Caso <i class="fas fa-arrow-right ml-2 text-xs"></i></a>
+                    </div>
+                </div>
+
+                <!-- Projeto 3 -->
+                <div class="project-card bg-white rounded-[2rem] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 group" data-category="web">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1557821552-17105176677c?fit=crop&w=800&q=80" alt="Projeto E-commerce" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <div class="absolute inset-0 bg-pink-600 opacity-0 group-hover:opacity-20 transition"></div>
+                    </div>
+                    <div class="p-8">
+                        <span class="text-pink-600 text-xs font-bold uppercase tracking-wider">E-commerce</span>
+                        <h4 class="text-2xl font-bold mt-2 mb-4">Lumina Store</h4>
+                        <p class="text-slate-500 text-sm mb-6">E-commerce de moda minimalista com integração completa de checkout e estoque.</p>
+                        <a href="#" class="inline-flex items-center text-slate-900 font-bold hover:text-pink-600">Ver Caso <i class="fas fa-arrow-right ml-2 text-xs"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Contacto -->
+    <section id="contato" class="py-24 px-6 bg-indigo-900 text-white overflow-hidden relative">
+        <div class="absolute top-0 right-0 opacity-10 transform translate-x-1/2 -translate-y-1/2">
+            <i class="fas fa-paper-plane text-[20rem]"></i>
+        </div>
+        
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 relative z-10">
+            <div>
+                <h2 class="text-4xl md:text-5xl font-extrabold mb-8">Vamos tirar o seu projeto do papel?</h2>
+                <p class="text-indigo-200 text-lg mb-12">
+                    Estou sempre aberto a novas ideias e parcerias. Se você tem um desafio, eu tenho a solução.
+                </p>
+                <div class="space-y-6">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center text-xl">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <p class="text-xl">contato@freelancer.dev</p>
+                    </div>
+                    <!-- Número de WhatsApp Atualizado -->
+                    <a href="https://wa.me/5538998957863" target="_blank" class="flex items-center space-x-4 hover:text-green-400 transition">
+                        <div class="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center text-xl">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <p class="text-xl">+55 (38) 99895-7863</p>
+                    </a>
+                </div>
+            </div>
+
+            <div class="bg-white p-8 md:p-12 rounded-[2rem] text-slate-900 shadow-2xl">
+                <form id="contactForm" class="space-y-6">
+                    <div>
+                        <label class="block text-sm font-bold text-slate-700 mb-2">Seu Nome</label>
+                        <input type="text" required class="w-full px-4 py-4 bg-slate-100 rounded-xl border-none focus:ring-2 focus:ring-indigo-500 outline-none transition" placeholder="Ex: João Silva">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold text-slate-700 mb-2">Seu E-mail</label>
+                        <input type="email" required class="w-full px-4 py-4 bg-slate-100 rounded-xl border-none focus:ring-2 focus:ring-indigo-500 outline-none transition" placeholder="joao@exemplo.com">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold text-slate-700 mb-2">Sobre o que vamos falar?</label>
+                        <textarea rows="4" required class="w-full px-4 py-4 bg-slate-100 rounded-xl border-none focus:ring-2 focus:ring-indigo-500 outline-none transition" placeholder="Conte um pouco sobre a sua ideia..."></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-indigo-600 text-white py-4 rounded-xl font-bold text-lg hover:bg-indigo-700 transition transform hover:scale-[1.02]">
+                        Enviar Mensagem <i class="fas fa-paper-plane ml-2"></i>
+                    </button>
+                </form>
+                <div id="successMessage" class="hidden text-center p-8">
+                    <div class="text-green-500 text-6xl mb-4"><i class="fas fa-check-circle"></i></div>
+                    <h3 class="text-2xl font-bold mb-2">Mensagem Enviada!</h3>
+                    <p class="text-slate-500">Responderei o mais rápido possível.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Botão Flutuante de WhatsApp -->
+    <a href="https://wa.me/5538998957863" target="_blank" class="fixed bottom-8 right-8 bg-green-500 text-white w-16 h-16 rounded-full flex items-center justify-center text-3xl shadow-2xl hover:bg-green-600 transition-all z-50 hover:scale-110">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Footer -->
+    <footer class="py-12 px-6 border-t border-slate-200">
+        <div class="max-w-7xl mx-auto flex flex-col md:row justify-between items-center text-slate-400 text-sm">
+            <p>© 2024 Freelancer.dev - Desenvolvido com <i class="fas fa-heart text-red-400"></i></p>
+            <div class="flex space-x-6 mt-4 md:mt-0">
+                <a href="#" class="hover:text-indigo-600">Privacy Policy</a>
+                <a href="#" class="hover:text-indigo-600">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Lógica de filtragem de portfólio
+        function filterProjects(category) {
+            const cards = document.querySelectorAll('.project-card');
+            cards.forEach(card => {
+                if (category === 'all' || card.getAttribute('data-category') === category) {
+                    card.style.display = 'block';
+                    setTimeout(() => card.style.opacity = '1', 10);
+                } else {
+                    card.style.opacity = '0';
+                    setTimeout(() => card.style.display = 'none', 300);
+                }
+            });
+        }
+
+        // Simulação de envio de formulário
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            this.classList.add('hidden');
+            document.getElementById('successMessage').classList.remove('hidden');
+        });
+
+        // Efeito de sombra na navegação ao fazer scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('shadow-md');
+            } else {
+                nav.classList.remove('shadow-md');
+            }
+        });
+    </script>
+</body>
+</html>
